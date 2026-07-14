@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /xv6
 
-COPY xv6-original/ .
+COPY ..
 
 RUN make
 
