@@ -107,3 +107,17 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// Measure fragmentation of unordered free list
+uint64
+sys_measurefrag(void)
+{
+  return kmeasure_frag();
+}
+
+// Return number of free pages
+uint64
+sys_freepages(void)
+{
+  return kfreepages();
+}

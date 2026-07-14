@@ -80,3 +80,34 @@ kalloc(void)
     memset((char *)r, 5, PGSIZE); // fill with junk
   return (void *)r;
 }
+
+// TEMP: measure fragmentation of unordered free list
+// Added only for comparison with modified xv6
+// Does NOT modify kfree or kalloc behavior
+uint64
+kmeasure_frag(void)
+{
+  uint64 frag = 0;
+  acquire(&kmem.lock);
+  struct run *r = kmem.freelist;
+  if(r) frag = 1;
+  while(r && r->next){
+    if((uint64)r->next != (uint64)r + PGSIZE)
+      frag++;
+    r = r->next;
+  }
+  release(&kmem.lock);
+  return frag;
+}
+
+// Count free pages
+uint64
+kfreepages(void)
+{
+  uint64 n = 0;
+  acquire(&kmem.lock);
+  struct run *r = kmem.freelist;
+  while(r){ n++; r = r->next; }
+  release(&kmem.lock);
+  return n;
+}

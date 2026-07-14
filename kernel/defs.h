@@ -58,6 +58,8 @@ void            ireclaim(int);
 
 // kalloc.c
 void*           kalloc(void);
+uint64          kmeasure_frag(void);
+uint64          kfreepages(void);
 void            kfree(void *);
 void            kinit(void);
 

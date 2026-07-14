@@ -142,6 +142,9 @@ UPROGS=\
 	$U/_grind\
 	$U/_wc\
 	$U/_zombie\
+	$U/_memtest_orig\
+	$U/_schedtest\
+	$U/_schedtest2\
 	$U/_logstress\
 	$U/_forphan\
 	$U/_dorphan\
