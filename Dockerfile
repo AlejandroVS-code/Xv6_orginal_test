@@ -21,4 +21,4 @@ RUN git clone https://github.com/AlejandroVS-code/Xv6_orginal_test.git .
 RUN make
 
 # Ejecutar xv6
-CMD ["make", "qemu", "CPUS=1"]
+CMD ["make", "qemu"]
